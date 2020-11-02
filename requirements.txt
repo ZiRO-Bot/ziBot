@@ -17,4 +17,4 @@ requests == 2.24.0
 TagScriptEngine == 2.3.0
 youtube_dl == 2020.9.20
 
--e git://github.com/ext-creators/discord-ext-ipc.git#egg=discord_ext_ipc
+-e git://github.com/ext-creators/discord-ext-ipc.git#egg=discord.ext.ipc

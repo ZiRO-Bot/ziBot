@@ -11,7 +11,7 @@ import traceback
 import time
 
 from discord.errors import NotFound
-from discord.ext import commands
+from discord.ext import commands, ipc
 from dotenv import load_dotenv
 
 # Create data directory if its not exist
@@ -43,6 +43,7 @@ def get_cogs():
         "cogs.anilist",
         "cogs.utils",
         "cogs.custom_commands",
+        "cogs.ipc",
         # "cogs.music",
     ]
     return extensions
@@ -71,7 +72,7 @@ class ziBot(commands.Bot):
             allowed_mentions=discord.AllowedMentions(users=True, roles=False),
             intents=discord.Intents.all(),
         )
-
+        
         # Init database
         self.conn = sqlite3.connect("data/database.db")
         self.c = self.conn.cursor()
@@ -88,6 +89,9 @@ class ziBot(commands.Bot):
 
         with open("config.json", "r") as f:
             self.config = json.load(f)
+        
+        # Bot variable for dashboard server
+        self.ipc = ipc.Server(self, self.config['webserver']['ip'], self.config['webserver']['port'], self.config['webserver']['secret'])
 
         if not self.config["bot_token"]:
             self.logger.error("No token found. Please add it to config.json!")

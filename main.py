@@ -48,6 +48,7 @@ def check_json():
                     "twitch": {"id": "", "secret": ""},
                     "reddit": {"id": "", "secret": "", "user_agent": ""},
                     "openweather_apikey": "",
+                    "webserver": {"ip": "127.0.0.1", "port": "8765", "secret": ""},
                 },
                 f,
                 indent=4,
@@ -61,6 +62,7 @@ def init_bot():
     check_json()
 
     bot = ziBot()
+    bot.ipc.start()
     bot.run()
 
 
