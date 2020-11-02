@@ -12,6 +12,7 @@ praw == 7.1.0
 python_dateutil == 2.8.1
 python_dotenv == 0.14.0
 pytz == 2020.1
+requests_oauthlib == 1.3.0
 quart == 0.13.1
 requests == 2.24.0
 TagScriptEngine == 2.3.0
